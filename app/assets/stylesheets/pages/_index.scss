@@ -1,33 +1,72 @@
 @import "home";
 @import "new_pool";
 
-#img-pool-index {
-  width: 308px
+#city-display {
+  font-size: 1em;
+  display: inline-block;
+  margin: auto;
+  margin-left: 32%;
+  margin-bottom: -15px;
+  vertical-align: middle;
 }
 
+@media (max-width: 480px) {
+  #city-display {
+  margin-left: 25%;
+}
+}
+
+#img-pool-index {
+  position: relative;
+  margin: auto;
+  margin-bottom: 0px;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+  width: 308px;
+  height: 205px;
+  background: url("http://lorempixel.com/308/205/city/")
+}
+
+#title-card {
+  background: white;
+  width: 308px;
+  height: 41px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin: auto;
+  margin-bottom: 23px;
+}
+
+
 #pools-box {
-  padding-right: 9px;
+  padding-right: 3px;
 }
 
 
 #pool-title-display {
-  padding-top: 10px;
-  text-align: left;
-  margin-left: 29px;
+  // padding-top: 10px;
+  // text-align: left;
+  // margin-left: 29px;
+  position: absolute;
+  top: 214px;
+  left: 20px;
+  color: black;
 }
 
 #btn-back {
-  margin-bottom: 10px;
-  margin-left: 10px;
+  margin-top: 2em;
+  margin-bottom: 12px;
+  margin-left: 0.7em;
+  display: inline-block;
 }
 
 #pool-thumb-info-box {
-  position: relative;
+  // position: relative;
 }
 
 #pool-price {
   position: absolute;
-  left: 10px;
+  left: 0px;
   top: 149px;
   font-size: 20px;
   color: white;
@@ -39,10 +78,14 @@
 
 #img-user-index {
   position: absolute;
-  left: 239px;
+  left: 224px;
   top: 167px;
   width: 65px;
-  border-color: $gray-lighter;
+  border-color: white;
   border-width: 2px;
   border-style: solid;
+}
+
+#map-container {
+  padding-left: 1em;
 }
