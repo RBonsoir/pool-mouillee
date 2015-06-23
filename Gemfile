@@ -49,6 +49,8 @@ gem 'omniauth-facebook'
 
 # Figaro to protect API keys
 gem 'figaro'
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
 
 
 group :development, :test do

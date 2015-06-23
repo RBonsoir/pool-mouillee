@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="profile">
+        <% if current_user.provider %>
+          <%= image_tag current_user.facebook_picture %>
+        <% else %>
+          <%= image_tag @user.picture.url(:thumb), class:"img-avatar"%>
+        <% end %>
+        <p><%= @user.first_name.capitalize + ' ' + @user.last_name.capitalize %></p>
+      </div>
+      <div class='links'>
+        <p><%= link_to 'Update my profile', edit_user_path %></p>
+        <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
+      </div>
+
+    </div>
+  </div>
+</div>
