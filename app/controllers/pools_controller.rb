@@ -7,5 +7,14 @@ class PoolsController < ApplicationController
       marker.lat 43.5528470
       marker.lng 7.0173690
     end
+
+  def new
+
+  end
+
+
+
+
+
   end
 end
