@@ -17,14 +17,14 @@ $navbar-bg: white;
 $navbar-height: 50px;
 $navbar-vertical-padding: 10px;
 $navbar-horizontal-padding: 20px;
-$navbar-border-bottom-width: 1px;
+$navbar-border-bottom-width: 0px;
 $navbar-border-bottom-color: $gray-lighter;
 
 /* -------------------------------------
  * Navbar button
  * ------------------------------------- */
 $navbar-btn-height: 40px;
-$navbar-btn-bg: lightgrey;
+$navbar-btn-bg: $red;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
 $navbar-btn-radius: 2px;
@@ -104,7 +104,7 @@ $navbar-profile-border-width: 2px;
     border: $navbar-profile-border-width solid $navbar-profile-border-color;
     box-shadow: 0 0 2px rgb(200, 200, 200);
     height: $navbar-height - (2 * $navbar-profile-border-width);
-    margin-right: 10px;
+    margin-right: 3px;
     border-radius: $navbar-profile-radius;
   }
 
@@ -114,26 +114,32 @@ $navbar-profile-border-width: 2px;
     background: transparent;
   }
 
-  .navbar-nav > li > .dropdown-menu{
-    border-radius: 0;
+  .dropdown {
+    &:hover {
+      background: rgba(54, 25, 25, .5);
+    }
+  }
+
+  .dropdown-menu{
+    text-align: right;
     margin-top: 10px;
   }
 
-  .navbar-nav > li > .dropdown-menu:before{
-    position: absolute;
-    background: white;
-    height: 10px;
-    width: 10px;
-    content: "\00a0";
-    display: block;
-    left: 50%;
-    margin-left: -5px;
-    top: -5px;
-    transform: rotate(45deg);
-    border-top: 1px solid #e6e6e6;
-    border-left: 1px solid #e6e6e6;
-    z-index: -1;
-  }
+  // .navbar-nav > li > .dropdown-menu:before{
+  //   position: absolute;
+  //   background: white;
+  //   height: 10px;
+  //   width: 10px;
+  //   content: "\00a0";
+  //   display: block;
+  //   left: 50%;
+  //   margin-left: -5px;
+  //   top: -5px;
+  //   transform: rotate(45deg);
+  //   border-top: 1px solid #e6e6e6;
+  //   border-left: 1px solid #e6e6e6;
+  //   z-index: -1;
+  // }
 }
 
 /* -------------------------------------
@@ -153,4 +159,9 @@ $navbar-profile-border-width: 2px;
       padding-bottom: 0;
     }
   }
+}
+
+#first-name {
+  font-weight: 400px;
+  font-size: 18px;
 }

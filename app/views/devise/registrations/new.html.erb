@@ -1,21 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
+      <div class="card-white-content">
 
-      <h2>Sign up</h2>
+        <div class="facebookConnect">
+          <%= render "devise/shared/facebookConnect" %>
+        </div>
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :first_name, required: true, autofocus: true %>
-        <%= f.input :last_name, required: true, autofocus: true %>
-        <%= f.input :email, required: true, autofocus: true %>
-        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-        <%= f.input :password_confirmation, required: true %>
-        <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
-      <% end %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :first_name, required: true, autofocus: true %>
+          <%= f.input :last_name, required: true, autofocus: true %>
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+          <%= f.input :password_confirmation, required: true %>
+          <%= f.button :submit, "Sign up", class: "mainLoginSignup" %>
+        <% end %>
 
-      <%= render "devise/shared/links" %>
+        <div class='text-center'>
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "Log in", new_session_path(resource_name) %><br />
+          <% end -%>
+        </div>
 
+      </div>
     </div>
   </div>
 </div>

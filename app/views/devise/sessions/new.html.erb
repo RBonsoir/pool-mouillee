@@ -1,19 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+<div class='main'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="card-white-content">
 
-      <h2>Sign in</h2>
+          <div class="facebookConnect">
+            <%= render "devise/shared/facebookConnect" %>
+          </div>
 
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :email, required: false, autofocus: true %>
-          <%= f.input :password, required: false %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          <%= f.button :submit, "Sign in", class: "btn btn-primary" %>
-      <% end %>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :email, label: false, placeholder: 'Your email' %>
+              <%= f.input :password, label: false, placeholder: 'Your email' %>
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
-      <%= render "devise/shared/links" %>
+              <%= f.button :submit, "Sign in", class: "mainLoginSignup" %>
+          <% end %>
 
+          <div class='text-center'>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+            <% end -%>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
