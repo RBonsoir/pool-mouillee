@@ -1,0 +1,30 @@
+#home_banner{
+  position: relative;
+  height: 510px;
+  background-image: image_url('banner.jpg');
+    background-size: cover;
+}
+
+#home_tagline {
+  padding-top:100px;
+ }
+
+#home_tagline h1{
+  text-transform: uppercase;
+  font-size:64px;
+  color:white;
+}
+#home_tagline p{
+  font-size:18px;
+  color:white;
+}
+
+#home_search_bar{
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
