@@ -28,16 +28,12 @@ class PoolsController < ApplicationController
   end
 
   def create
-    p '===== debug pool ====='
-    p params = pool_params
-    p @pool = Pool.new(params)
-    p '===== debug current user ====='
-    p current_user
-    p '===== debug assignement ====='
-    p @pool.user = current_user
-    p '===== debug assigned ====='
+    params = pool_params
+    @pool = Pool.new(params)
+    current_user
+    @pool.user = current_user
+    @pool.availability = true
     if @pool.save
-      p '===== save! ====='
       redirect_to root_path
     else
       render :new
