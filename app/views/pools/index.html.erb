@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <%= link_to "Retour", :root, {class: "btn btn-primary", id: "btn-back"} %>
+  </div>
+  <div class="row">
+    <div class="col-xs-7" id="pools-box">
+        <% @pools.each do |pool| %>
+          <div class="col-xs-6 text-center" id="pool-thumb-info-box">
+            <%= image_tag "http://lorempixel.com/450/300/city/", {class: "img-rounded", id:"img-pool-index"}%>
+            <p id="pool-title-display"><%= pool.title %></p>
+            <div id="pool-price"> <%= pool.price %> € </div>
+            <%= image_tag "http://www.bitrebels.com/wp-content/themes/distinctive/img_resize/timthumb.php?src=http://www.bitrebels.com/wp-content/uploads/2010/01/geek-girls.jpg&h=280&w=274&zc=1", {class: "img-circle", id: "img-user-index"}%>
+          </div>
+        <% end %>
+      </div>
+    <div class="col-xs-5">
+      <div id="map" style="width: 100%; height: 600px;"></div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(15);
+      });
+    })
+  <% end %>
+<% end %>
