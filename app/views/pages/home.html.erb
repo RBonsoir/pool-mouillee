@@ -6,11 +6,11 @@
   <div id="home_search_bar" class="text-center">
     <div class="col-sm-12">
       <div>
-        <form class="form-inline">
+        <form action="/pools" method="get" class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="city">City</label>
             <!-- <input type="text" class="form-control" id="city" placeholder="City"> -->
-            <select class="form-control" id="city">
+            <select class="form-control" name="city">
               <option>Cannes</option>
               <option>Nice</option>
               <option>Palavas</option>
@@ -24,11 +24,11 @@
           </div>
           <div class="form-group">
             <label class="sr-only" for="checkin_on">Date</label>
-            <input type="date" class="form-control" id="checkin_on">
+            <input type="date" class="form-control" name="checkin_on">
           </div>
           <div class="form-group">
             <label class="sr-only" for="length">Duration</label>
-            <select class="form-control" id="length">
+            <select class="form-control" name="length">
               <option>Morning</option>
               <option>Afternoon</option>
               <option>All Day</option>
