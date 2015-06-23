@@ -45,6 +45,11 @@ gem 'simple_form'
 # Gemfile
 gem 'devise'
 
+gem 'omniauth-facebook'
+
+# Figaro to protect API keys
+gem 'figaro'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
