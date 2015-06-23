@@ -1,6 +1,12 @@
 class PoolsController < ApplicationController
   def index
-    @pools = Pool.all
+    # params
+    @city = params[:city]
+    @checkin_on = params[:checkin_on]
+    @length = params[:length]
+
+    # pool selection
+    @pools = Pool.where(city: @city)
 
     # Gmaps markers
     @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
@@ -16,5 +22,10 @@ class PoolsController < ApplicationController
 
 
 
+  end
+
+  def show
+    @checkin_on = params[:checkin_on]
+    @length = params[:length]
   end
 end
