@@ -2,7 +2,7 @@
  * Colors & Fonts
  * ------------------------------------- */
 $navbar-color: $gray-light;
-$navbar-hover-color: $yellow;
+$navbar-hover-color: $morange;
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
@@ -40,6 +40,7 @@ $navbar-profile-border-width: 2px;
  * SCSS code
  * ------------------------------------- */
 .navbar-wagon {
+  margin-bottom:0px;
   background: $navbar-bg;
   font-family: $navbar-font-family;
   border: none;
