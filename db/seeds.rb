@@ -5,9 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.destroy_all
-Pool.destroy_all
 Booking.destroy_all
+Pool.destroy_all
+User.destroy_all
 
 # Create 100 Users
 100.times do
@@ -27,7 +27,7 @@ cities.each do |town|
   owners.each  do |owner|
     pool = Pool.new
     pool.title = "Another lovelely seeded pool"
-    pool.content = Faker::Lorem.characters(140)
+    pool.content = "This is an awesome pool"
     pool.address = Faker::Address.street_address
     pool.city = town
     pool.price = rand(1..50)

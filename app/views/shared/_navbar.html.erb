@@ -42,7 +42,11 @@
             </li>
           <% end %>
         <li>
-          <%= link_to t(".top_call_to_action", default: "Add your pool"), "#", class: "btn" %>
+          <% if user_signed_in? %>
+            <%= link_to t(".top_call_to_action", default: "Add your pool"), new_pool_path, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to t(".top_call_to_action", default: "Add your pool"), new_user_registration_path, class: "btn btn-primary" %>
+          <% end %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -1,9 +1,31 @@
-<div id="home_banner">
+<div id="pool-big-pic" style="background-image: url(<%= image_path @pool.picture.url(:large) %>)">
 </div>
-<div class="container">
+<div class="container-fluid" id="container-show">
   <div class="row">
-    <div class="col-xs-12 col-md-4"></div>
-    <div class="col-xs-12 col-md-4"></div>
+    <div class="col-xs-12 col-md-3" id="side-box-padding">
+      <div class="white-radius-box" id="owner-profile-box">
+       <%= image_tag "http://www.bitrebels.com/wp-content/themes/distinctive/img_resize/timthumb.php?src=http://www.bitrebels.com/wp-content/uploads/2010/01/geek-girls.jpg&h=280&w=274&zc=1", {class: "img-circle"}%>
+        <h2><%= @pool.user.first_name + " " + @pool.user.last_name %><h2>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6" id="pool-description-box-padding">
+      <div class="white-radius-box" id="pool-infos-box">
+        <h1><%= @pool.title %></h1>
+        <h3><%= @pool.address + " - " + @pool.city %></h3>
+        <p><%= @pool.content[0..30] %></p>
+        <div id="capacity">
+          <%= @pool.capacity %> <i class="fa fa-user"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3" id="side-box-padding">
+      <div class="white-radius-box" id="book-pool-box">
+        <h2>Booking</h2>
+        <p><%= @day+ "/" + @month + "/" + @year %></p>
+        <p><%= @length_text %></p>
+        <div id="pool-price-booking"><%= @pool.price %> €</div>
+        <p class="btn btn-danger">Confirm</p>
+      </div>
+    </div>
   </div>
 </div>
-

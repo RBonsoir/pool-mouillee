@@ -8,7 +8,7 @@
       <% @pools.each do |pool| %>
         <div class="col-xs-12 col-md-6 text-center" id="pool-thumb-info-box">
           <%= link_to(pool_path(id: pool.id, checkin_on: @checkin_on, length: @length)) do %>
-            <div id="img-pool-index">
+            <div id="img-pool-index" style="background-image: url(<%= image_path pool.picture.url(:medium) %>);">
               <p id="pool-title-display"><%= pool.title %></p>
               <div id="pool-price"> <%= pool.price %> € </div>
               <%= image_tag "http://www.bitrebels.com/wp-content/themes/distinctive/img_resize/timthumb.php?src=http://www.bitrebels.com/wp-content/uploads/2010/01/geek-girls.jpg&h=280&w=274&zc=1", {class: "img-circle", id: "img-user-index"}%>

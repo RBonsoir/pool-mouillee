@@ -19,8 +19,24 @@ class PoolsController < ApplicationController
   end
 
   def show
+    # get params from search
     @checkin_on = params[:checkin_on]
     @length = params[:length]
+    @day = @checkin_on[8...10]
+    @month = @checkin_on[5...7]
+    @year = @checkin_on[0...4]
+    case @length
+    when "Morning"
+      @length_text = "for morning only"
+    when "Afternoon"
+      @length_text = "for afternoon only"
+    when "All Day"
+      @length_text = "for the whole day"
+    when "All night long"
+      @length_text = "for the whole night"
+    end
+    # get pool
+    @pool = Pool.find(params[:id])
   end
 
   def new
@@ -46,7 +62,7 @@ class PoolsController < ApplicationController
     end
 
     def pool_params
-      params.require(:pool).permit(:title, :address, :city, :price, :capacity, :availability, :content)
+      params.require(:pool).permit(:title, :address, :city, :price, :capacity, :availability, :content, :picture)
     end
 
 end
