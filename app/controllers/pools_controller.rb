@@ -6,7 +6,7 @@ class PoolsController < ApplicationController
     @length = params[:length]
 
     # pool selection
-    @pools = Pool.where(city: @city)
+    @pools = Pool.where(city: @city, availability: true)
 
     # Gmaps markers
     @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
