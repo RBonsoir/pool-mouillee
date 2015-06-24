@@ -7,7 +7,7 @@
           <% if current_user.provider %>
             <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
           <% else %>
-            <%= image_tag current_user.picture.url(:thumb)%>
+            <%= image_tag current_user.picture.url(:small), class:'img-avatar'%>
           <% end %>
           <h4><%= current_user.first_name + ' ' + current_user.last_name %></h4>
         </div>
