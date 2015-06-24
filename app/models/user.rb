@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_attached_file :picture,
-    styles: { medium: "300x300>", thumb: "100x100>" }, :default_url => "/images/default-avatar.png"
+    styles: { medium: "300x300>", thumb: "100x100>" }, :default_url => "default-avatar_:style.png"
 
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :bookings, dependent: :destroy
   has_many :pools, dependent: :destroy
+  has_many :requests, through: :pools, source: :bookings
 
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }

@@ -1,0 +1,27 @@
+.container {
+  margin: 50px;
+}
+
+.row {
+  position: relative;
+  margin: auto;
+}
+.profile-container {
+  padding: 20px;
+  background-color: white;
+}
+
+.main-container {
+  float: right;
+  background-color: $gray-light;
+  padding: 20px;
+  width: 100%;
+}
+
+.my-bookings {
+  background-color: white;
+}
+
+.my-pool-requests {
+  background-color: white;
+}

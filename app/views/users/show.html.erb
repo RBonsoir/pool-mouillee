@@ -1,19 +1,85 @@
-<div class="container">
+<div class='container'>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="profile">
-        <% if current_user.provider %>
-          <%= image_tag current_user.facebook_picture %>
-        <% else %>
-          <%= image_tag @user.picture.url(:thumb), class:"img-avatar"%>
-        <% end %>
-        <p><%= @user.first_name.capitalize + ' ' + @user.last_name.capitalize %></p>
-      </div>
-      <div class='links'>
-        <p><%= link_to 'Update my profile', edit_user_path %></p>
-        <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
-      </div>
+    <div class='col-xs-12 col-md-3 '>
+      <div class='profile-container'>
 
+        <div class="profile">
+          <% if current_user.provider %>
+            <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
+          <% else %>
+            <%= image_tag current_user.picture.url(:thumb)%>
+          <% end %>
+          <h4><%= current_user.first_name + ' ' + current_user.last_name %></h4>
+        </div>
+
+        <div class='links'>
+          <p><%= link_to 'Complete my profile', edit_user_path %></p>
+          <p><%= link_to 'Update my account', edit_user_registration_path(current_user) %></p>
+
+
+          <div class='my-pools'>
+            <p> My Pools:</p>
+            <ul>
+              <% current_user.pools.each do |pool| %>
+                <li><%= link_to pool.title, pool_path(pool) %></li>
+              <% end %>
+            </ul>
+          </div>
+
+
+          <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
+        </div>
+
+      </div>
     </div>
-  </div>
+
+    <div class='col-xs-12 col-md-9'>
+      <div class='main-container'>
+
+        <div class='my-bookings'>
+          <h3>My Bookings</h3>
+          <table class='table'>
+            <th>Pictures</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Lenght</th>
+            <th>Status</th>
+            <% current_user.bookings.each do |booking| %>
+              <tr>
+                <td>Les pools pictures</td>
+                <td><%= booking.pool.title %></td>
+                <td><%= booking.checkin_on %></td>
+                <td><%= booking.length %></td>
+                <td><%= booking.status %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+
+        <div class='my-pool-requests'>
+          <h3>My Pools Requests</h3>
+          <table class='table'>
+            <th>Picture</th>
+            <th>Guest</th>
+            <th>Pool</th>
+            <th>Date</th>
+            <th>Status</th>
+              <% current_user.pools.each do |pool| %>
+                <tr>
+                  <% pool.bookings.each do |booking| %>
+                    <td><%= image_tag booking.user.picture(:thumb), class:"img-avatar" %></td>
+                    <td><%= booking.user.first_name + ' ' + booking.user.last_name %></td>
+                    <td><%= booking.pool.title %></td>
+                    <td><%= booking.checkin_on %></td>
+                    <td><%= booking.status %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  <div class='clear'></div>
+
 </div>
