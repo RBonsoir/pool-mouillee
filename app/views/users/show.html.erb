@@ -46,7 +46,7 @@
             <th>Status</th>
             <% current_user.bookings.each do |booking| %>
               <tr>
-                <td>Les pools pictures</td>
+                <td><%= image_tag booking.pool.picture.url(:thumbnail) %></td>
                 <td><%= booking.pool.title %></td>
                 <td><%= booking.checkin_on %></td>
                 <td><%= booking.length %></td>
@@ -67,7 +67,11 @@
               <% current_user.pools.each do |pool| %>
                 <tr>
                   <% pool.bookings.each do |booking| %>
-                    <td><%= image_tag booking.user.picture(:thumb), class:"img-avatar" %></td>
+                    <% if booking.user.provider %>
+                      <td><%= image_tag booking.user.facebook_picture, class:"img-avatar" %></td>
+                    <% else %>
+                      <td><%= image_tag booking.user.picture(:thumb), class:"img-avatar" %></td>
+                    <% end %>
                     <td><%= booking.user.first_name + ' ' + booking.user.last_name %></td>
                     <td><%= booking.pool.title %></td>
                     <td><%= booking.checkin_on %></td>

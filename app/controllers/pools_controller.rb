@@ -57,7 +57,7 @@ class PoolsController < ApplicationController
     @pool.user = current_user
     @pool.availability = true
     if @pool.save
-      redirect_to root_path
+      redirect_to pool_path(@pool)
     else
       render :new
     end

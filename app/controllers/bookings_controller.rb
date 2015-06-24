@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.save
 
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   private
