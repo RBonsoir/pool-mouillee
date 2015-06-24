@@ -1,9 +1,11 @@
-<div id="home_banner">
-</div>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-4"></div>
+    <div class="col-xs-12 col-md-4">
+      <%= @pool.title %>
+      <%= image_tag @pool.picture.url(:large) %>
+      <%= image_tag @pool.picture.url(:medium) %>
+      <%= image_tag @pool.picture.url(:thumbnail) %>
+    </div>
     <div class="col-xs-12 col-md-4"></div>
   </div>
 </div>
-

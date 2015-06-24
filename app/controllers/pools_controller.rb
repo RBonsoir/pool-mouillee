@@ -21,6 +21,7 @@ class PoolsController < ApplicationController
   def show
     @checkin_on = params[:checkin_on]
     @length = params[:length]
+    @pool = Pool.find(params[:id])
   end
 
   def new
@@ -46,7 +47,7 @@ class PoolsController < ApplicationController
     end
 
     def pool_params
-      params.require(:pool).permit(:title, :address, :city, :price, :capacity, :availability, :content)
+      params.require(:pool).permit(:title, :address, :city, :price, :capacity, :availability, :content, :picture)
     end
 
 end
