@@ -27,7 +27,7 @@ cities.each do |town|
   owners.each  do |owner|
     pool = Pool.new
     pool.title = "Another lovelely seeded pool"
-    pool.content = Faker::Lorem.characters(140)
+    pool.content = "This is an awesome pool"
     pool.address = Faker::Address.street_address
     pool.city = town
     pool.price = rand(1..50)
