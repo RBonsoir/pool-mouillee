@@ -1,11 +1,3 @@
-.container {
-  margin: 50px;
-}
-
-.row {
-  position: relative;
-  margin: auto;
-}
 .profile-container {
   padding: 20px;
   background-color: white;
@@ -24,4 +16,11 @@
 
 .my-pool-requests {
   background-color: white;
+}
+
+.img-avatar {
+  border: $navbar-profile-border-width solid $navbar-profile-border-color;
+  box-shadow: 0 0 2px rgb(200, 200, 200);
+  margin-right: 3px;
+  border-radius: $navbar-profile-radius;
 }
