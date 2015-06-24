@@ -22,7 +22,7 @@
                 <% if current_user.provider %>
                   <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
                 <% else %>
-                  <%= image_tag @user.picture.url(:thumb), class:"img-avatar" %>
+                  <%= image_tag current_user.picture.url(:thumb), class:"img-avatar" %>
                 <% end %>
               <span class="caret"></span>
               <% end %>
