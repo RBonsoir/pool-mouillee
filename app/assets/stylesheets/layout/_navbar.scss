@@ -40,6 +40,7 @@ $navbar-profile-border-width: 2px;
  * SCSS code
  * ------------------------------------- */
 .navbar-wagon {
+  z-index: 1; // fais passer la navbar au-dessus
   margin-bottom:0px;
   background: $navbar-bg;
   font-family: $navbar-font-family;
