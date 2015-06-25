@@ -19,11 +19,7 @@
           <% if user_signed_in? %>
             <li class="dropdown">
               <%= link_to '#', { "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" } do %>
-                <% if current_user.provider %>
-                  <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
-                <% else %>
-                  <%= image_tag current_user.picture.url(:thumb), class:"img-avatar" %>
-                <% end %>
+                <%= image_tag current_user.profile_picture, class:"img-avatar" %>
               <span class="caret"></span>
               <% end %>
               <ul class="dropdown-menu" aria-labelledby="dLabel">

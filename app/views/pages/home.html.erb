@@ -2,6 +2,10 @@
   <div class="container text-center" id="home_tagline">
     <h1>Pool Mouillée</h1>
     <p>Put on your best swimsuit and find a local a pool!</p>
+    <% if user_signed_in? %>
+      <p><%= current_user.profile_picture %></p>
+      <p><%= image_tag current_user.profile_picture %></p>
+    <% end %>
   </div>
   <div id="home_search_bar" class="text-center">
     <div class="col-sm-12">

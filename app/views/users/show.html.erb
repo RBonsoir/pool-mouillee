@@ -4,11 +4,7 @@
       <div class='profile-container'>
 
         <div class="profile">
-          <% if current_user.provider %>
-            <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
-          <% else %>
-            <%= image_tag current_user.picture.url(:small), class:'img-avatar'%>
-          <% end %>
+          <%= image_tag current_user.profile_picture, class:"img-avatar" %>
           <h4><%= current_user.first_name + ' ' + current_user.last_name %></h4>
         </div>
 
@@ -67,11 +63,7 @@
               <% current_user.pools.each do |pool| %>
                 <tr>
                   <% pool.bookings.each do |booking| %>
-                    <% if booking.user.provider %>
-                      <td><%= image_tag booking.user.facebook_picture, class:"img-avatar" %></td>
-                    <% else %>
-                      <td><%= image_tag booking.user.picture(:thumb), class:"img-avatar" %></td>
-                    <% end %>
+                    <td><%= image_tag booking.user.profile_picture, class:"img-profil-thumb" %></td>
                     <td><%= booking.user.first_name + ' ' + booking.user.last_name %></td>
                     <td><%= booking.pool.title %></td>
                     <td><%= booking.checkin_on %></td>

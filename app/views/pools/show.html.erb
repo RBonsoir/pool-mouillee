@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-3" id="side-box-padding">
       <div class="white-radius-box" id="owner-profile-box">
-       <%= image_tag "http://www.bitrebels.com/wp-content/themes/distinctive/img_resize/timthumb.php?src=http://www.bitrebels.com/wp-content/uploads/2010/01/geek-girls.jpg&h=280&w=274&zc=1", {class: "img-circle"}%>
+       <%= image_tag @pool.user.profile_picture, {class: "img-circle"}%>
         <h2><%= @pool.user.first_name + " " + @pool.user.last_name %><h2>
       </div>
     </div>
