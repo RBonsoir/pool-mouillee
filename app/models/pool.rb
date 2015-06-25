@@ -3,11 +3,13 @@ class Pool < ActiveRecord::Base
   belongs_to :user
   has_many :bookings
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :title, presence: true
-  validates :city, inclusion: {in: %w(Cannes Nice Palavas Valence Avignon Santa-Barbara Miami Monaco Yakutsk), allow_nil: false}
+  validates :address, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
   validates :capacity, numericality: { only_integer: true } # "nil" is not accepted as not an integer!
-  validates :address, presence: true
   validates :user, presence: true
 
   has_attached_file :picture,
