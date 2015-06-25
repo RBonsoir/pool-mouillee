@@ -21,16 +21,19 @@
     <div class="col-xs-12 col-md-3" id="side-box-padding">
       <div class="white-radius-box" id="book-pool-box">
         <h2>Booking</h2>
-          <p><%= @day+ "/" + @month + "/" + @year %></p>
-        <p><%= @length_text %></p>
+        <% if @checkin_on == " " %>
+          <p>Please select a date</p>
+        <% else %>
+          <p> You have a date !</p>
+        <% end %>
         <div id="pool-price-booking"><%= @pool.price %> €</div>
         <% if current_user %>
           <% if @pool.availability %>
             <%= form_for(@booking) do |f| %>
-              <%= f.hidden_field :pool_id, :value => @pool.id %>
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.hidden_field :checkin_on, :value => @checkin_on %>
-              <%= f.hidden_field :length, :value => @length %>
+              <%= f.hidden_field :pool_id, :value => @pool.id.to_i %>
+              <%= f.hidden_field :user_id, :value => current_user.id.to_i %>
+              <%= f.date_field :checkin_on, :value => @checkin_on, :class => "form-control", :id => "input-show" %>
+              <%= f.select :length, @length_selection, {}, {class: 'form-control', id: "input-show"} %>
               <%= f.hidden_field :status, :value => "Pending" %>
               <%= f.submit "Confirm", :class => "btn btn-danger"  %>
             <% end %>
