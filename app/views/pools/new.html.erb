@@ -13,9 +13,9 @@
             <h2 class="text-left"><i class="fa fa-map-marker"></i> Address</h2>
             <%= f.input :address, label: false, placeholder: '32 rue Marcel Pagnol Street, Nice'  %>
             <%= f.input :street_number, as: :hidden, name: "pool[street_number]", input_html: { id: "street_number"} %>
-            <%= f.input :route, as: :hidden, name: "pool[route]" %>
-            <%= f.input :locality, as: :hidden, name: "pool[locality]" %>
-            <%= f.input :country, as: :hidden, name: "pool[country]" %>
+            <%= f.input :route, as: :hidden, name: "pool[route]", input_html: { id: "route"} %>
+            <%= f.input :locality, as: :hidden, name: "pool[locality]", input_html: { id: "locality"} %>
+            <%= f.input :country, as: :hidden, name: "pool[country]", input_html: { id: "country"} %>
           </div>
           <div class="form-group">
             <h2 class="text-left"><i class="fa fa-money"></i> Price and capacity</h2>
