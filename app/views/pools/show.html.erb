@@ -20,15 +20,11 @@
     </div>
     <div class="col-xs-12 col-md-3" id="side-box-padding">
       <div class="white-radius-box" id="book-pool-box">
-        <h2>Booking</h2>
-        <% if @checkin_on == " " %>
-          <p>Please select a date</p>
-        <% else %>
-          <p> You have a date !</p>
-        <% end %>
+        <h2 id="h2-show-margin">Booking</h2>
         <div id="pool-price-booking"><%= @pool.price %> €</div>
         <% if current_user %>
           <% if @pool.availability %>
+            <p><%= @message_to_user %></p>
             <%= form_for(@booking) do |f| %>
               <%= f.hidden_field :pool_id, :value => @pool.id.to_i %>
               <%= f.hidden_field :user_id, :value => current_user.id.to_i %>
@@ -41,7 +37,8 @@
             Pool not available.
           <% end %>
         <% else %>
-          Please login !
+            <%= image_tag("duck.jpg", height: '64') %>
+            <%= link_to "Book this pool", new_user_registration_path, class: "btn btn-danger"%>
         <% end %>
      <!--    <p class="btn btn-danger">Confirm</p> -->
       </div>
