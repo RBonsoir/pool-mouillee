@@ -3,11 +3,7 @@
     <div class='col-xs-12 col-md-3'>
       <div class='profile-container'>
         <div class="profile white-radius-box">
-          <% if current_user.provider %>
-            <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
-          <% else %>
-            <%= image_tag current_user.picture.url(:medium), class:'img-avatar'%>
-          <% end %>
+          <%= image_tag current_user.profile_picture, class:"img-profil-medium" %>
           <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"><h4><%= current_user.first_name + ' ' + current_user.last_name %></h4></a>
           <div class="collapse" id="collapseExample">
             <ul>
@@ -69,47 +65,42 @@
             <th>Pool</th>
             <th>Date</th>
             <th class='text-center'>Status</th>
-              <% current_user.pools.each do |pool| %>
-                <tr>
-                  <% pool.bookings.each do |booking| %>
-                    <% if booking.user.provider %>
-                      <td class='vert-align'><%= image_tag booking.user.facebook_picture, class:"img-avatar" %></td>
-                    <% else %>
-                      <td class='vert-align'><%= image_tag booking.user.picture(:thumb), class:"img-avatar" %></td>
-                    <% end %>
-                    <td class='vert-align'><strong><%= booking.user.first_name + ' ' + booking.user.last_name %></strong></td>
-                    <td class='vert-align'><%= booking.pool.title %></td>
-                    <td class='vert-align'><%= booking.checkin_on %></td>
-                      <% if booking.status == 'Pending' %>
-                        <td class='text-center'>
-                        <ul class='list-inline'>
-                            <li><%= button_to 'Confirm', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'btn btn-success' %></li>
-                            <li><%= button_to 'Refuse', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'btn btn-danger'  %></li>
-                            </ul>
-                        </td>
-                      <% else %>
-                        <% if booking.status == 'Confirmed' %>
-                          <td class='vert-align text-success'>
-                            <ul class='list-inline text-center'>
-                              <li><strong><i class="fa fa-check"></i></strong></li>
-                              <li><strong><%= booking.status %></strong></li>
-                              <li><%= button_to '[refuse]', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'change-status' %></li>
-                            </ul>
-                          </td>
-                        <% else %>
-                          <td class='vert-align text-danger'>
-                            <ul class='list-inline text-center'>
-                              <li><strong><i class="fa fa-times"></strong></i></li>
-                              <li><strong><%= booking.status %></strong></li>
-                              <li><%= button_to '[accept]', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'change-status' %></li>
-                            </ul>
-                          </td>
-                        <% end %>
-                      <% end %>
+            <% current_user.pools.each do |pool| %>
+              <tr>
+                <% pool.bookings.each do |booking| %>
+                  <td class='vert-align'><%= image_tag current_user.profile_picture, class:"img-profil-thumb" %></td>
+                  <td class='vert-align'><strong><%= booking.user.first_name + ' ' + booking.user.last_name %></strong></td>
+                  <td class='vert-align'><%= booking.pool.title %></td>
+                  <td class='vert-align'><%= booking.checkin_on %></td>
+                  <% if booking.status == 'Pending' %>
+                    <td class='text-center'>
+                      <ul class='list-inline'>
+                        <li><%= button_to 'Confirm', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'btn btn-success' %></li>
+                        <li><%= button_to 'Refuse', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'btn btn-danger'  %></li>
+                        </ul>
                     </td>
+                  <% else %>
+                    <% if booking.status == 'Confirmed' %>
+                      <td class='vert-align text-success'>
+                        <ul class='list-inline text-center'>
+                          <li><strong><i class="fa fa-check"></i></strong></li>
+                          <li><strong><%= booking.status %></strong></li>
+                          <li><%= button_to '[refuse]', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'change-status' %></li>
+                        </ul>
+                      </td>
+                    <% else %>
+                      <td class='vert-align text-danger'>
+                        <ul class='list-inline text-center'>
+                          <li><strong><i class="fa fa-times"></strong></i></li>
+                          <li><strong><%= booking.status %></strong></li>
+                          <li><%= button_to '[accept]', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'change-status' %></li>
+                        </ul>
+                      </td>
+                    <% end %>
                   <% end %>
-                </tr>
-              <% end %>
+                <% end %>
+              </tr>
+            <% end %>
           </table>
         </div>
       </div>

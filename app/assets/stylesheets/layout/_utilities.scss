@@ -46,7 +46,14 @@
 .img-profil-thumb {
   border: 2px solid white;
   box-shadow: 0 0 2px rgb(200, 200, 200);
-  height: 36px;;
+  height: 36px;
+  margin-right: 3px;
+  border-radius: 50%;
+}
+.img-profil-medium {
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgb(200, 200, 200);
+  height: 100px;
   margin-right: 3px;
   border-radius: 50%;
 }
