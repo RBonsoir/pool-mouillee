@@ -11,7 +11,7 @@
             <div id="img-pool-index" style="background-image: url(<%= image_path pool.picture.url(:medium) %>);">
               <p id="pool-title-display"><%= pool.title %></p>
               <div id="pool-price"> <%= pool.price %> € </div>
-              <%= image_tag "http://www.bitrebels.com/wp-content/themes/distinctive/img_resize/timthumb.php?src=http://www.bitrebels.com/wp-content/uploads/2010/01/geek-girls.jpg&h=280&w=274&zc=1", {class: "img-circle", id: "img-user-index"}%>
+              <%= image_tag pool.user.profile_picture, {class: "img-circle", id: "img-user-index"}%>
             </div>
           <% end %>
           <div id="title-card">
