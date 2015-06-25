@@ -12,21 +12,10 @@
           <div class="form-group">
             <h2 class="text-left"><i class="fa fa-map-marker"></i> Address</h2>
             <%= f.input :address, label: false, placeholder: '32 rue Marcel Pagnol Street, Nice'  %>
-            <form>
-              <label>Address</label>
-              <input id="user_input_autocomplete_address" placeholder="Votre adresse...">
-              <label>street_number</label>
-              <input id="street_number" name="street_number" disabled>
-              <label>route</label>
-              <input id="route" name="route" disabled>
-              <label>locality</label>
-              <input id="locality" name="locality" disabled>
-              <label>country</label>
-              <input id="country" name="country" disabled>
-            </form>
-
-
-
+            <%= f.input :street_number, as: :hidden, name: "pool[street_number]", input_html: { id: "street_number"} %>
+            <%= f.input :route, as: :hidden, name: "pool[route]" %>
+            <%= f.input :locality, as: :hidden, name: "pool[locality]" %>
+            <%= f.input :country, as: :hidden, name: "pool[country]" %>
           </div>
           <div class="form-group">
             <h2 class="text-left"><i class="fa fa-money"></i> Price and capacity</h2>
@@ -77,7 +66,7 @@
 
     google.maps.event.addDomListener(window, 'load', function() {
       console.log('doing something');
-      initializeAutocomplete('user_input_autocomplete_address');
+      initializeAutocomplete('pool_address');
     });
   </script>
 <% end %>

@@ -47,7 +47,7 @@ class PoolsController < ApplicationController
   end
 
   def create
-    raise
+    raise ''
     p "debug creation"
     p params = pool_params
     p params[:street_number]
