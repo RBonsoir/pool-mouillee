@@ -5,8 +5,13 @@ class BookingsController < ApplicationController
     params[:user_id] = params[:user_id].to_i
     @booking = Booking.new(booking_params)
     @booking.save
+    redirect_to user_path
+  end
 
-    redirect_to user_path(current_user)
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status: params[:status])
+    redirect_to user_path
   end
 
   private

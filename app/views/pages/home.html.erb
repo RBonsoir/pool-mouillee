@@ -1,32 +1,50 @@
-<div class="wrapper" id="home_banner">
-  <div class="container text-center" id="home_tagline">
-    <h1>Pool Mouillée</h1>
-    <p>Put on your best swimsuit and find a local a pool!</p>
+<div class="homepage-hero-module">
+  <div class="video-container" id="video-home">
+    <div class="filter"></div>
+    <video autoplay loop class="fillWidth">
+       <source src="<%= video_path("poolmouillee.mp4")%>" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+
+        <source src="<%= video_path("poolmouillee.webm")%>" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+
+    </video>
   </div>
-  <div id="home_search_bar" class="text-center">
-    <div class="col-sm-12">
-      <div>
-        <form action="/pools" method="get" class="form-inline">
-          <div class="form-group">
-            <label class="sr-only" for="city">City</label>
-            <input type="text" class="form-control" name="city" placeholder="City">
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="checkin_on">Date</label>
-            <input type="date" class="form-control" name="checkin_on">
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="length">Duration</label>
-            <select class="form-control" name="length">
-              <option>Morning</option>
-              <option>Afternoon</option>
-              <option>All Day</option>
-              <option>All night long</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-default btn-danger">Pan Pan</button>
-        </form>
-      </div>
+    <div class="poster hidden">
+        <img src="<%= image_path("poolmouillee.jpg")%>">
     </div>
+      <div class="container text-center" id="home_tagline">
+        <h1>Pool Mouillée</h1>
+        <p>Put on your best swimsuit and find a local a pool!</p>
+      </div>
+    <div id="home_search_bar" class="text-center">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-12">
+        <div>
+          <form action="/pools" method="get" class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="city">City</label>
+              <input type="text" class="form-control" name="city" placeholder="City">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="checkin_on">Date</label>
+              <input type="date" class="form-control" name="checkin_on">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="length">Duration</label>
+              <select class="form-control" name="length">
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>All Day</option>
+                <option>All night long</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-default btn-danger">Pan Pan</button>
+          </form>
+        </div>
+      </div>
   </div>
 </div>
+
+
+
+
+
+
