@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>PoolMouillee</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <!-- Add these line for detecting device width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,8 +17,9 @@
 
   <!-- Google Maps -->
 
-  <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
+
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBYcAxl74WUjIEgd6IYCS-3RBNwC4D1DOc" %>
 
   <%= javascript_include_tag "application" %>
 

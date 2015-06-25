@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624091424) do
+ActiveRecord::Schema.define(version: 20150625131900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,17 +33,24 @@ ActiveRecord::Schema.define(version: 20150624091424) do
     t.string   "title"
     t.text     "content"
     t.string   "address"
-    t.string   "city"
     t.integer  "price"
     t.integer  "capacity"
     t.boolean  "availability"
     t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street_number"
+    t.string   "route"
+    t.string   "locality"
+    t.string   "administrative_area_level_1"
+    t.string   "postal_code"
+    t.string   "country"
   end
 
   add_index "pools", ["user_id"], name: "index_pools_on_user_id", using: :btree

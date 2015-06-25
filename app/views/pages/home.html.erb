@@ -2,10 +2,6 @@
   <div class="container text-center" id="home_tagline">
     <h1>Pool Mouillée</h1>
     <p>Put on your best swimsuit and find a local a pool!</p>
-    <% if user_signed_in? %>
-      <p><%= current_user.profile_picture %></p>
-      <p><%= image_tag current_user.profile_picture %></p>
-    <% end %>
   </div>
   <div id="home_search_bar" class="text-center">
     <div class="col-sm-12">
@@ -13,18 +9,7 @@
         <form action="/pools" method="get" class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="city">City</label>
-            <!-- <input type="text" class="form-control" id="city" placeholder="City"> -->
-            <select class="form-control" name="city">
-              <option>Cannes</option>
-              <option>Nice</option>
-              <option>Palavas</option>
-              <option>Valence</option>
-              <option>Avignon</option>
-              <option>Santa-Barbara</option>
-              <option>Miami</option>
-              <option>Monaco</option>
-              <option>Yakutsk</option>
-            </select>
+            <input type="text" class="form-control" name="city" placeholder="City">
           </div>
           <div class="form-group">
             <label class="sr-only" for="checkin_on">Date</label>

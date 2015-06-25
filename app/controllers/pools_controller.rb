@@ -7,14 +7,11 @@ class PoolsController < ApplicationController
     @city = params[:city]
     @checkin_on = params[:checkin_on]
     @length = params[:length]
-
-    # pool selection
-    @pools = Pool.where(city: @city, availability: true)
-
+    p   @pools = Pool.near(@city, 10)
     # Gmaps markers
     @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
-      marker.lat 43.5528470
-      marker.lng 7.0173690
+      p marker.lat pool.latitude
+      p marker.lng pool.longitude
     end
   end
 
@@ -42,7 +39,6 @@ class PoolsController < ApplicationController
 
     # get pool
     @pool = Pool.find(params[:id])
-
     @booking = Booking.new
   end
 
@@ -51,7 +47,10 @@ class PoolsController < ApplicationController
   end
 
   def create
-    params = pool_params
+    raise
+    p "debug creation"
+    p params = pool_params
+    p params[:street_number]
     @pool = Pool.new(params)
     current_user
     @pool.user = current_user
@@ -69,7 +68,7 @@ class PoolsController < ApplicationController
     end
 
     def pool_params
-      params.require(:pool).permit(:title, :address, :city, :price, :capacity, :availability, :content, :picture)
+      params.require(:pool).permit(:title, :address, :street_number, :route, :locality, :country, :price, :capacity, :availability, :content, :picture)
     end
 
 end

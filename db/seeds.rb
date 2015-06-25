@@ -20,57 +20,37 @@ User.destroy_all
   user.save
 end
 
-# Create 45 pools
-cities = %w(Cannes Nice Palavas Valence Avignon Santa-Barbara Miami Monaco Yakutsk)
-cities.each do |town|
-  owners = User.all.sample(5)
-  owners.each  do |owner|
-    pool = Pool.new
-    pool.title = "Another lovelely seeded pool"
-    pool.content = "This is an awesome pool"
-    pool.address = Faker::Address.street_address
-    pool.city = town
-    pool.price = rand(1..50)
-    pool.capacity = rand(1..20)
-    pool.availability = true
-    pool.user = owner
-    pool.save
-  end
-end
+# Create 3 pools
+  owner1 = User.all.sample(1).first
+  pool1 = Pool.new
+  pool1.title = "Nice pool"
+  pool1.content = "This is an awesome pool"
+  pool1.address = "4 villa Belliard, Paris"
+  pool1.price = rand(1..50)
+  pool1.capacity = rand(1..20)
+  pool1.availability = true
+  pool1.user = owner1
+  pool1.save
 
-# Create 20 bookings
-  # Sample 20 pools
-  # 8 first confirmed
-  # 9 next pending
-  # 3 last refused
-booked_pools = Pool.all.sample(20)
+  owner2 = User.all.sample(1).first
+  pool2 = Pool.new
+  pool2.title = "Great pool by the lake"
+  pool2.content = "This is an awesome pool"
+  pool2.address = "47 boulevard Richard Lenoir, Paris"
+  pool2.price = rand(1..50)
+  pool2.capacity = rand(1..20)
+  pool2.availability = true
+  pool2.user = owner2
+  pool2.save
 
-booked_pools[0..7].each do |pool|
-  booking = Booking.new
-  booking.user = User.all.sample(1).first
-  booking.pool = pool
-  booking.checkin_on = Faker::Date.forward(60)
-  booking.length = ['Morning', 'Afternoon', 'All Day', 'All night long'][rand(0..3)]
-  booking.status = "Confirmed"
-  booking.save
-end
+  owner3 = User.all.sample(1).first
+  pool3 = Pool.new
+  pool3.title = "Awesome Poooool"
+  pool3.content = "This is an awesome pool"
+  pool3.address = "25 rue du petit musc, Paris"
+  pool3.price = rand(1..50)
+  pool3.capacity = rand(1..20)
+  pool3.availability = true
+  pool3.user = owner3
+  pool3.save
 
-booked_pools[8..16].each do |pool|
-  booking = Booking.new
-  booking.user = User.all.sample(1).first
-  booking.pool = pool
-  booking.checkin_on = Faker::Date.forward(60)
-  booking.length = ['Morning', 'Afternoon', 'All Day', 'All night long'][rand(0..3)]
-  booking.status = "Pending"
-  booking.save
-end
-
-booked_pools[17..19].each do |pool|
-  booking = Booking.new
-  booking.user = User.all.sample(1).first
-  booking.pool = pool
-  booking.checkin_on = Faker::Date.forward(60)
-  booking.length = ['Morning', 'Afternoon', 'All Day', 'All night long'][rand(0..3)]
-  booking.status = "Refused"
-  booking.save
-end
