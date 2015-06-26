@@ -30,8 +30,12 @@
             <%= form_for(@booking) do |f| %>
               <%= f.hidden_field :pool_id, :value => @pool.id.to_i %>
               <%= f.hidden_field :user_id, :value => current_user.id.to_i %>
-              <%= f.date_field :checkin_on, :value => @checkin_on, :class => "form-control", :id => "input-show" %>
-              <%= f.select :length, @length_selection, {}, {class: 'form-control', id: "input-show"} %>
+              <div class="input-group" id="input-show">
+                <%= f.text_field :checkin_on, :value => @checkin_on, :class => "form-control validate-checkin" %>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+              <%= f.select :length, @length_selection, {}, {class: 'form-control ', id: "input-show"} %>
+
               <%= f.hidden_field :status, :value => "Pending" %>
               <%= f.submit "Confirm", :class => "btn btn-danger"  %>
             <% end %>
@@ -66,5 +70,12 @@
           handler.getMap().setZoom(14)
         });
     })
-  <% end %>
+      $(document).ready(function(){
+        $('.validate-checkin').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            todayHighlight: true
+        });
+      });
+    <% end %>
 <% end %>

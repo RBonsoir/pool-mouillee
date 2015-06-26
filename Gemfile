@@ -23,7 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use faker for seeding
 gem 'faker'
-
+gem 'bootstrap-datepicker-rails'
 
 
 # Use ActiveModel has_secure_password
