@@ -14,16 +14,17 @@
           </div>
         </div>
         <div class='my-pools white-radius-box'>
-          <h4> My Pools</h4>
+          <% if current_user.pools.length == 1 %>
+            <h4><%= current_user.pools.length%> pool</h4>
+          <% else %>
+            <h4><%= current_user.pools.length%> pools</h4>
+          <% end %>
           <ul>
             <% current_user.pools.each do |pool| %>
-              <%= link_to pool_path(pool) do %>
-                  <li><%= image_tag pool.picture.url(:thumbnail), class:'img-avatar'%>
-                    <%= pool.title %></li>
-                  <% end %>
+              <li><%= link_to pool.title, pool_path(pool)%></li>
             <% end %>
           </ul>
-          <button class='btn btn-danger add-pool'><%= link_to 'Add a pool', new_pool_path %></button>
+          <button class='btn btn-red add-pool'><%= link_to 'Add a pool', new_pool_path %></button>
         </div>
       </div>
     </div>
@@ -42,18 +43,18 @@
               <tr>
                 <td class='vert-align hidden-responsive'>
                   <%= link_to pool_path(booking.pool) do %>
-                    <%= image_tag booking.pool.picture.url(:thumbnail) %>
+                    <%= image_tag booking.pool.picture.url(:thumbnail), class:'img-pools-request' %>
                   <% end %>
                 </td>
                 <td class='vert-align'><strong><%= booking.pool.title %></strong></td>
                 <td class='vert-align'><%= booking.checkin_on %></td>
                 <td class='vert-align hidden-responsive'><%= booking.length %>
                   <% if booking.status == 'Pending' %>
-                     <td class='vert-align text-warning'><strong><i class="fa fa-clock-o"></i> <%= booking.status %></strong></td>
+                     <td class='vert-align text-orange'><strong><i class="fa fa-clock-o"></i> <%= booking.status %></strong></td>
                   <% elsif booking.status == 'Confirmed' %>
-                    <td class='vert-align text-success'><strong><i class="fa fa-check"></i> <%= booking.status %></strong></td>
+                    <td class='vert-align text-green'><strong><i class="fa fa-check"></i> <%= booking.status %></strong></td>
                   <% else %>
-                    <td class='vert-align text-danger'><strong><i class="fa fa-times"></i> <%= booking.status %></strong></td>
+                    <td class='vert-align text-red'><strong><i class="fa fa-times"></i> <%= booking.status %></strong></td>
                   <% end %>
                 </td>
               </tr>
@@ -63,7 +64,7 @@
 
         <div class='my-pool-requests white-radius-box'>
           <h3>My Pools Requests</h3>
-          <table class='table table-hover'>
+          <table class='table'>
             <th class='hidden-responsive'></th>
             <th class='hidden-responsive'>Guest</th>
             <th>Pool</th>
@@ -82,7 +83,7 @@
                     <td class='vert-align'><%= booking.pool.title %></td>
                     <td class='vert-align'><%= booking.checkin_on %></td>
                       <% if booking.status == 'Pending' %>
-                        <td class='vert-align text-warning'>
+                        <td class='vert-align text-orange'>
                           <ul class='list-inline  hidden-responsive'>
                             <li><strong><i class="fa fa-clock-o"></strong></i></li>
                             <li><strong><%= booking.status %></strong></li>
@@ -90,30 +91,30 @@
                         </td>
                         <td class='vert-align'>
                         <ul class='list-inline'>
-                            <li><%= button_to 'Confirm', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'text-success' %></li>
-                            <li><%= button_to 'Refuse', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:''%></li>
+                            <li><%= button_to 'Confirm', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'btn-green' %></li>
+                            <li><%= button_to 'Refuse', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'btn-red'%></li>
                             </ul>
                         </td>
                       <% else %>
                         <% if booking.status == 'Confirmed' %>
-                          <td class='vert-align text-success'>
-                            <ul class='list-inline  hidden-responsive'>
+                          <td class='vert-align text-green hidden-responsive'>
+                            <ul class='list-inline'>
                               <li><strong><i class="fa fa-check"></i></strong></li>
                               <li><strong><%= booking.status %></strong></li>
                             </ul>
                           </td>
-                          <td class='vert-align'>
-                            <%= button_to 'Cancel', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'change-status' %>
+                          <td class='vert-align responsive-left'>
+                            <%= button_to 'Cancel', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Refused'}, method: :patch, class:'btn-red' %>
                           </td>
                         <% else %>
-                          <td class='vert-align text-danger'>
-                            <ul class='list-inline hidden-responsive'>
+                          <td class='vert-align text-red hidden-responsive'>
+                            <ul class='list-inline'>
                               <li><strong><i class="fa fa-times"></strong></i></li>
                               <li><strong><%= booking.status %></strong></li>
                             </ul>
                           </td>
-                          <td class='vert-align'>
-                            <%= button_to 'Accept', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'change-status' %>
+                          <td class='vert-align responsive-left'>
+                            <%= button_to 'Accept', {controller: :bookings, action: :update, id: booking.id }, params: {status: 'Confirmed'}, method: :patch, class:'btn-green' %>
                           </td>
                         <% end %>
                       <% end %>

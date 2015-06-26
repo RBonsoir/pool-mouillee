@@ -73,3 +73,22 @@
 .container-fluid {
   padding: 0;
 }
+
+.text-red {
+  color: $red
+}
+
+.text-orange {
+  color: $orange
+}
+
+.text-green {
+  color: $green
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+

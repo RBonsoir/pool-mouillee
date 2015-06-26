@@ -47,4 +47,36 @@
 }
 
 
+.btn-red {
+  font-size: 13px;
+  border-radius: 2px;
+  border: none;
+  background: $red;
+  color: white;
+  &:hover {
+    background: $red-hover;
+  }
+}
+
+.btn-orange {
+  font-size: 13px;
+  border-radius: 2px;
+  border: none;
+  background: $orange;
+  color: white;
+  &:hover {
+    background: $orange-hover;
+  }
+}
+
+.btn-green {
+  font-size: 13px;
+  border-radius: 2px;
+  border: none;
+  background: $green;
+  color: white;
+  &:hover {
+    background: $green-hover;
+  }
+}
 
