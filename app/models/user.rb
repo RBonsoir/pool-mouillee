@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :pools, dependent: :destroy
   has_many :requests, through: :pools, source: :bookings
 
-  validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
-  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :email, presence: true
   validates :encrypted_password, presence: true
 
