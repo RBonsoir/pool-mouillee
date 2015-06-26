@@ -70,9 +70,6 @@
   left: 80%;
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+.container-fluid {
+  padding: 0;
 }

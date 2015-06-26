@@ -74,9 +74,9 @@
                 <% pool.bookings.each do |booking| %>
                   <tr>
                     <% if booking.user.provider %>
-                      <td class='vert-align hidden-responsive'><%= image_tag booking.user.facebook_picture, class:"img-avatar" %></td>
+                      <td class='vert-align hidden-responsive'><%= image_tag booking.user.facebook_picture, class:"img-pools-request" %></td>
                     <% else %>
-                      <td class='vert-align hidden-responsive'><%= image_tag booking.user.picture(:thumb), class:"img-avatar" %></td>
+                      <td class='vert-align hidden-responsive'><%= image_tag booking.user.picture(:thumb), class:"img-pools-request" %></td>
                     <% end %>
                     <td class='vert-align hidden-responsive'><strong><%= booking.user.first_name + ' ' + booking.user.last_name %></strong></td>
                     <td class='vert-align'><%= booking.pool.title %></td>
