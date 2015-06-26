@@ -1,24 +1,32 @@
 <div class="container">
-  <div class="row">
-    <%= link_to "Back", :root, {class: "btn btn-primary", id: "btn-back"} %>
-    <h1 id="city-display">Available pools in <%= @city %></h1>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-lg-7" id="pools-box">
-      <% @pools.each do |pool| %>
-        <div class="col-xs-12 col-md-6 text-center" id="pool-thumb-info-box">
-          <%= link_to(pool_path(id: pool.id, checkin_on: @checkin_on, length: @length)) do %>
-            <div id="img-pool-index" style="background-image: url(<%= image_path pool.picture.url(:medium) %>);">
-              <p id="pool-title-display"><%= pool.title %></p>
-              <div id="pool-price"> <%= pool.price %> € </div>
-              <%= image_tag pool.user.profile_picture, {class: "img-circle", id: "img-user-index"}%>
+  <% if @nb_results == 0 %>
+    <div class="row">
+      <%= link_to "Back", :root, {class: "btn btn-primary", id: "btn-back"} %>
+      <h1 id="city-display">Oops... looks like there's nothing there...</h1>
+      <p class="text-center">Doesn't really matter... Grab a <i class="fa fa-beer"></i> and check out our awesome pools all around the world</p>
+    </div>
+  <% else %>
+    <div class="row">
+      <%= link_to "Back", :root, {class: "btn btn-primary", id: "btn-back"} %>
+      <h1 id="city-display">Available pools in <%= @city %></h1>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-lg-7" id="pools-box">
+          <% @pools.each do |pool| %>
+            <div class="col-xs-12 col-md-6 text-center" id="pool-thumb-info-box">
+              <%= link_to(pool_path(id: pool.id, checkin_on: @checkin_on, length: @length)) do %>
+                <div id="img-pool-index" style="background-image: url(<%= image_path pool.picture.url(:medium) %>);">
+                  <p id="pool-title-display"><%= pool.title %></p>
+                  <div id="pool-price"> <%= pool.price %> € </div>
+                  <%= image_tag pool.user.profile_picture, {class: "img-circle", id: "img-user-index"}%>
+                </div>
+              <% end %>
+              <div id="title-card">
+              </div>
             </div>
           <% end %>
-          <div id="title-card">
-          </div>
-        </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <div class="col-xs-12 col-lg-5 hidden-xs hidden-sm visible-md-* visible-lg-*" id="map-container">
       <div id="map" style="width: 100%; height: 500px;"></div>
     </div>

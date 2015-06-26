@@ -8,7 +8,16 @@ class PoolsController < ApplicationController
     @city = params[:city]
     @checkin_on = params[:checkin_on]
     @length = params[:length]
-    p   @pools = Pool.near(@city, 10)
+    @nb_results = Pool.near(@city, 10).size
+    if @nb_results == 0
+      @pools = Pool.all
+    else
+      @pools = Pool.near(@city, 10)
+    end
+    p "=== debug ===="
+    p @nb_results
+    p @pools
+
     # Gmaps markers
     @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
       p marker.lat pool.latitude
