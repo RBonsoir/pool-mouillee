@@ -52,6 +52,9 @@ class PoolsController < ApplicationController
       p marker.lng pool.longitude
     end
 
+    # price
+    @price = @pool.price
+
   end
 
   def new

@@ -23,7 +23,14 @@
     <div class="col-xs-12 col-md-3" id="side-box-padding">
       <div class="white-radius-box" id="book-pool-box">
         <h2 id="h2-show-margin">Booking</h2>
-        <div id="pool-price-booking"><%= @pool.price %> €</div>
+        <div id="pool-price-booking">
+          <div id="price-int">
+            <%= @price %>
+            </div>
+          <div id="euro">
+             €
+          </div>
+        </div>
         <% if current_user %>
           <% if @pool.availability %>
             <p><%= @message_to_user %></p>
