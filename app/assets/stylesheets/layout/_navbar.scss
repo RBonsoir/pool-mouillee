@@ -185,13 +185,14 @@ $navbar-profile-border-width: 2px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #f00d58;
   color: white;
   display: inline-block;
   position: relative;
   left: -20px;
   top: -10px;
   display: none;
+  font-weight:bold;
 }
 
 .notif p{
