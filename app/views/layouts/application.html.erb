@@ -29,6 +29,17 @@
   <%= javascript_include_tag "application" %>
 
   <%= yield(:after_js) %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      console.log('in the script');
+      var notif = parseInt($('.notif').text());
+      console.log(notif);
+      if (notif > 0) {
+        console.log('in the if');
+        $('.notif').css('display','inline-block');
+      }
+    })
+  <% end %>
 
 </body>
 </html>

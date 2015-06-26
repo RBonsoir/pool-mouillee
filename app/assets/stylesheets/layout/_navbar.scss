@@ -166,3 +166,21 @@ $navbar-profile-border-width: 2px;
   font-weight: 400px;
   font-size: 18px;
 }
+
+.notif {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  display: inline-block;
+  position: relative;
+  left: -20px;
+  top: -10px;
+  display: none;
+}
+
+.notif p{
+  margin-top: -15px;
+  margin-left: 5px;
+}

@@ -46,4 +46,9 @@ class User < ActiveRecord::Base
     return pic
   end
 
+  def notifications
+    # if new booking sur ma pool
+    return rand(0..1)
+  end
+
 end
