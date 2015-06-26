@@ -13,6 +13,9 @@
   border-radius: 2px;
   width: 100%;
   padding: 15px;
+  a {
+    color: white;
+  }
   &:hover {
     color: white;
     background-color: $facebook-hover;
