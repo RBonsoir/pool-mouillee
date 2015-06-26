@@ -19,6 +19,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:pool_id, :user_id, :checkin_on, :length, :status)
+    params.require(:booking).permit(:pool_id, :user_id, :checkin_on, :length, :status, :new_not)
   end
 end
