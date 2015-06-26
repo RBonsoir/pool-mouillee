@@ -42,8 +42,7 @@
       var mapOptions = {
         disableDefaultUI: true
       }
-      console.log(<%= raw @markers.to_json %>);
-      handler = Gmaps.build('Google');
+       handler = Gmaps.build('Google');
       handler.buildMap({
         provider: { disableDefaultUI: true },
         internal: { id: 'map' }
