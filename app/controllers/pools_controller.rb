@@ -3,47 +3,46 @@ class PoolsController < ApplicationController
 
 
   def index
+
     # params
     @city = params[:city]
     @checkin_on = params[:checkin_on]
     @length = params[:length]
-
-    # pool selection
-    @pools = Pool.where(city: @city, availability: true)
-
+    p   @pools = Pool.near(@city, 10)
     # Gmaps markers
     @markers = Gmaps4rails.build_markers(@pools) do |pool, marker|
-      marker.lat 43.5528470
-      marker.lng 7.0173690
+      p marker.lat pool.latitude
+      p marker.lng pool.longitude
     end
   end
 
   def show
-    # get params from search
-    @checkin_on = params[:checkin_on] || " "
+    @checkin_on = params[:checkin_on] || ""
     @length = params[:length] || " "
-    if @checkin_on
-      @day = @checkin_on[8...10] || " "
-      @month = @checkin_on[5...7] || " "
-      @year = @checkin_on[0...4] || " "
+
+     # message to user
+    if @checkin_on == ""
+      @message_to_user = "Please choose a date"
+    else
+      @message_to_user = " "
     end
 
-    # text display of length
-    case @length
-    when "Morning"
-      @length_text = "for morning only"
-    when "Afternoon"
-      @length_text = "for afternoon only"
-    when "All Day"
-      @length_text = "for the whole day"
-    when "All night long"
-      @length_text = "for the whole night"
+    if params[:length]
+      @length_selection = [@length, "Morning", "Afternoon", "All Day", "All Night long"].uniq
+    else
+      @length_selection = ["Morning", "Afternoon", "All Day", "All Night long"]
     end
 
     # get pool
     @pool = Pool.find(params[:id])
-
     @booking = Booking.new
+
+    # Gmaps marker
+    @markers = Gmaps4rails.build_markers(@pool) do |pool, marker|
+      p marker.lat pool.latitude
+      p marker.lng pool.longitude
+    end
+
   end
 
   def new
@@ -69,7 +68,7 @@ class PoolsController < ApplicationController
     end
 
     def pool_params
-      params.require(:pool).permit(:title, :address, :city, :price, :capacity, :availability, :content, :picture)
+      params.require(:pool).permit(:title, :address, :street_number, :route, :locality, :country, :price, :capacity, :availability, :content, :picture)
     end
 
 end

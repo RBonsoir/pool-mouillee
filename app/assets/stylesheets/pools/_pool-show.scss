@@ -11,6 +11,14 @@
   margin-bottom: 20px;
 }
 
+#pool-big-pic h1{
+  margin-top:0px;
+  padding-top:200px;
+  padding-left:20px;
+  text-transform:uppercase;
+  color:white;
+}
+
 #owner-profile-box {
   padding-top: 20px;
   padding-bottom: 3px;
@@ -59,7 +67,7 @@
   }
   .btn-danger {
     width: 84%;
-    margin-top: 25px;
+    margin-top: 9px;
   }
   #pool-price-booking {
     position: absolute;
@@ -71,6 +79,16 @@
     padding: 0px 15px;
     border-radius: 3px;
   }
+}
+
+#input-show {
+  width: 84%;
+  margin: auto;
+  margin-top: 9px;
+}
+
+#h2-show-margin {
+  margin-top: 3px;
 }
 
 

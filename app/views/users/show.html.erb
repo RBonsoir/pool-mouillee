@@ -2,13 +2,8 @@
   <div class="row">
     <div class='col-xs-12 col-md-3'>
       <div class='profile-container'>
-
         <div class="profile white-radius-box">
-          <% if current_user.provider %>
-            <%= image_tag current_user.facebook_picture, class:"img-avatar" %>
-          <% else %>
-            <%= image_tag current_user.picture.url(:medium), class:'img-avatar'%>
-          <% end %>
+          <%= image_tag current_user.profile_picture, class:"img-profil-medium" %>
           <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"><h4><%= current_user.first_name + ' ' + current_user.last_name %></h4></a>
           <div class="collapse" id="collapseExample">
             <ul>
@@ -18,30 +13,20 @@
             </ul>
           </div>
         </div>
-
         <div class='my-pools white-radius-box'>
           <h4> My Pools</h4>
           <ul>
             <% current_user.pools.each do |pool| %>
               <%= link_to pool_path(pool) do %>
-                  <li><%= image_tag pool.picture, class:'img-avatar'%>
+                  <li><%= image_tag pool.picture.url(:thumbnail), class:'img-avatar'%>
                     <%= pool.title %></li>
                   <% end %>
             <% end %>
           </ul>
           <button class='btn btn-danger add-pool'><%= link_to 'Add a pool', new_pool_path %></button>
         </div>
-
-
-
-
-
-
-
-
       </div>
     </div>
-
     <div class='col-xs-12 col-md-9'>
       <div class='main-container'>
 
@@ -55,7 +40,11 @@
             <th>Status</th>
             <% current_user.bookings.each do |booking| %>
               <tr>
-                <td class='vert-align hidden-responsive'><%= image_tag booking.pool.picture.url(:thumbnail) %></td>
+                <td class='vert-align hidden-responsive'>
+                  <%= link_to pool_path(booking.pool) do %>
+                    <%= image_tag booking.pool.picture.url(:thumbnail) %>
+                  <% end %>
+                </td>
                 <td class='vert-align'><strong><%= booking.pool.title %></strong></td>
                 <td class='vert-align'><%= booking.checkin_on %></td>
                 <td class='vert-align hidden-responsive'><%= booking.length %>
@@ -136,5 +125,5 @@
         </div>
       </div>
     </div>
-
+  </div>
 </div>

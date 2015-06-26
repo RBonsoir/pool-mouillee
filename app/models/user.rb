@@ -2,10 +2,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_attached_file :picture,
-    styles: { medium: "300x300>", small: "100x100>", thumb: "30x30" }, :default_url => "default-avatar_:style.png"
-
-  validates_attachment_content_type :picture,
-    content_type: /\Aimage\/.*\z/
+    styles: { normal: "200x200#" },
+    default_url: "default-avatar.png"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [ :facebook ]
@@ -31,6 +30,20 @@ class User < ActiveRecord::Base
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
+  end
+
+  def profile_picture
+    if self.picture.exists?
+      self.picture.url(:normal)
+    end
+    if ! self.picture.url().include? "default"
+      pic = self.picture.url(:normal)
+    elsif self.provider
+      pic = self.facebook_picture
+    else
+      pic = self.picture.url(:normal)
+    end
+    return pic
   end
 
 end
