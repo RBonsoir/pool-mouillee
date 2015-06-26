@@ -32,15 +32,14 @@
       text-align: left;
       padding: 0px;
       & li {
+        text-align: center;
         list-style-type: none;
-        padding: 10px;
-        &:hover {
-        background-color: $gray-lighter;
-        border-radius: 2px;
-        }
       }
       & a {
         color: black;
+        &:hover {
+          color: $red-hover;
+        }
       }
       & img {
         width: 40px;
@@ -92,6 +91,9 @@
   .hidden-responsive {
     display: none;
   }
+  .responsive-left {
+    text-align: left;
+  }
 }
 
 
@@ -110,4 +112,5 @@
   margin-right: 3px;
   border-radius: $navbar-profile-radius;
   width: 40px;
+  height: 40px;
 }
