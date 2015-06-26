@@ -46,4 +46,21 @@ class User < ActiveRecord::Base
     return pic
   end
 
+  def notifications
+    # if new booking sur ma pool
+    new_book = 0
+    self.pools.each do |pool|
+      pool.bookings.each do |booking|
+        p booking
+        if booking.new_not
+          new_book += 1
+        end
+      end
+    end
+    p "=====debug new book======"
+    p new_book
+    return new_book
+    # rand(0..1)
+  end
+
 end
