@@ -4,12 +4,14 @@ class BookingsController < ApplicationController
     params[:pool_id] = params[:pool_id].to_i
     params[:user_id] = params[:user_id].to_i
     @booking = Booking.new(booking_params)
+    @booking.new_not = true
     @booking.save
     redirect_to user_path
   end
 
   def update
     @booking = Booking.find(params[:id])
+    @booking.new_not = false
     @booking.update(status: params[:status])
     redirect_to user_path
   end

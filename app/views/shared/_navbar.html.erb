@@ -20,6 +20,7 @@
             <li class="dropdown">
               <%= link_to '#', { "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" } do %>
                 <%= image_tag current_user.profile_picture, class:"img-avatar" %>
+                <div class="notif"><p><%= current_user.notifications %></p></div>
                 <span class='first-name' ><%= current_user.first_name %></span>
               <span class="caret"></span>
               <% end %>
