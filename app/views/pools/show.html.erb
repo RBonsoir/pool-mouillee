@@ -1,4 +1,6 @@
 <div id="pool-big-pic" style="background-image: url(<%= image_path @pool.picture.url(:large) %>)">
+  <h1><%= @pool.title %></h1>
+  <div id="map" class="map-circle map-right-corner"></div>
 </div>
 <div class="container-fluid" id="container-show">
   <div class="row">
@@ -10,11 +12,11 @@
     </div>
     <div class="col-xs-12 col-md-6" id="pool-description-box-padding">
       <div class="white-radius-box" id="pool-infos-box">
-        <h1><%= @pool.title %></h1>
-        <h3><i class="fa fa-map-marker"></i><%= @pool.address %></h3>
-        <p><%= @pool.content %></p>
-        <div id="capacity">
-          <%= @pool.capacity %> <i class="fa fa-user"></i>
+        <h2><%= @pool.title %></h2>
+        <div id="capacity"><%= @pool.capacity %> <i class="fa fa-user"></i></div>
+        <div>
+          <h3><i class="fa fa-map-marker"></i><%= @pool.address %></h3>
+          <p><%= @pool.content %></p>
         </div>
       </div>
     </div>
@@ -40,8 +42,22 @@
             <%= image_tag("duck.jpg", height: '64') %>
             <%= link_to "Book this pool", new_user_registration_path, class: "btn btn-danger"%>
         <% end %>
-     <!--    <p class="btn btn-danger">Confirm</p> -->
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      console.log(<%= raw @markers.to_json %>);
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(14)
+      });
+    })
+  <% end %>
+<% end %>

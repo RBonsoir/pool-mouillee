@@ -17,8 +17,6 @@ class PoolsController < ApplicationController
   end
 
   def show
-
-    # get params from search
     @checkin_on = params[:checkin_on] || ""
     @length = params[:length] || " "
 
@@ -38,6 +36,13 @@ class PoolsController < ApplicationController
     # get pool
     @pool = Pool.find(params[:id])
     @booking = Booking.new
+
+    # Gmaps marker
+    @markers = Gmaps4rails.build_markers(@pool) do |pool, marker|
+      p marker.lat pool.latitude
+      p marker.lng pool.longitude
+    end
+
   end
 
   def new

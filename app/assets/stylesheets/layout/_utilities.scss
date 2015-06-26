@@ -57,3 +57,15 @@
   margin-right: 3px;
   border-radius: 50%;
 }
+.map-circle {
+  height: 220px;
+  width: 220px;
+  border-radius:50%;
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgb(200, 200, 200);
+}
+
+ .map-right-corner{
+  top: -10%;
+  left: 80%;
+}

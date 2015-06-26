@@ -18,7 +18,7 @@
           <ul>
             <% current_user.pools.each do |pool| %>
               <%= link_to pool_path(pool) do %>
-                  <li><%= image_tag pool.picture, class:'img-avatar'%>
+                  <li><%= image_tag pool.picture.url(:thumbnail), class:'img-avatar'%>
                     <%= pool.title %></li>
                   <% end %>
             <% end %>
@@ -40,7 +40,11 @@
             <th>Status</th>
             <% current_user.bookings.each do |booking| %>
               <tr>
-                <td class='vert-align'><%= image_tag booking.pool.picture.url(:thumbnail) %></td>
+                <td class='vert-align'>
+                  <%= link_to pool_path(booking.pool) do %>
+                    <%= image_tag booking.pool.picture.url(:thumbnail) %>
+                  <% end %>
+                </td>
                 <td class='vert-align'><strong><%= booking.pool.title %></strong></td>
                 <td class='vert-align'><%= booking.checkin_on %></td>
                 <td class='vert-align'><%= booking.length %>
@@ -68,8 +72,16 @@
             <% current_user.pools.each do |pool| %>
               <tr>
                 <% pool.bookings.each do |booking| %>
-                  <td class='vert-align'><%= image_tag current_user.profile_picture, class:"img-profil-thumb" %></td>
-                  <td class='vert-align'><strong><%= booking.user.first_name + ' ' + booking.user.last_name %></strong></td>
+                  <td class='vert-align'>
+                    <%= link_to user_path(booking.user) do %>
+                      <%= image_tag current_user.profile_picture, class:"img-profil-thumb" %>
+                    <% end %>
+                  </td>
+                  <td class='vert-align'>
+                    <%= link_to user_path(booking.user) do %>
+                      <strong><%= booking.user.first_name + ' ' + booking.user.last_name %></strong>
+                    <% end %>
+                  </td>
                   <td class='vert-align'><%= booking.pool.title %></td>
                   <td class='vert-align'><%= booking.checkin_on %></td>
                   <% if booking.status == 'Pending' %>
