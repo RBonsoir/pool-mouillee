@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        <%= image_tag "pool-mouillee.png" %>
+        <%= image_tag "pool-mouillee2.png" %>
       </a>
     </div>
 
@@ -20,10 +20,11 @@
             <li class="dropdown">
               <%= link_to '#', { "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" } do %>
                 <%= image_tag current_user.profile_picture, class:"img-avatar" %>
+                <span class='first-name' ><%= current_user.first_name %></span>
               <span class="caret"></span>
               <% end %>
               <ul class="dropdown-menu" aria-labelledby="dLabel">
-                <li><%= link_to current_user.first_name, user_path %></li>
+                <li><%= link_to 'Profile', user_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
               </ul>
@@ -39,9 +40,9 @@
           <% end %>
         <li>
           <% if user_signed_in? %>
-            <%= link_to t(".top_call_to_action", default: "Add your pool"), new_pool_path, class: "btn btn-primary" %>
+            <%= link_to t(".top_call_to_action", default: "Add your pool"), new_pool_path, class:'btn btn-danger'%>
           <% else %>
-            <%= link_to t(".top_call_to_action", default: "Add your pool"), new_user_registration_path, class: "btn btn-primary" %>
+            <%= link_to t(".top_call_to_action", default: "Add your pool"), new_user_registration_path, class:'btn btn-danger'%>
           <% end %>
         </li>
       </ul>

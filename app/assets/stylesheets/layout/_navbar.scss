@@ -2,14 +2,14 @@
  * Colors & Fonts
  * ------------------------------------- */
 $navbar-color: $gray-light;
-$navbar-hover-color: $morange;
+$navbar-hover-color: $red-hover;
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
 $navbar-letter-spacing: 1.5px;
 $navbar-font-family: $navbar-font;
-$navbar-bg: white;
+$navbar-bg: $nacre;
 
 /* -------------------------------------
  * Box model
@@ -84,15 +84,15 @@ $navbar-profile-border-width: 2px;
   .navbar-nav > li > a.btn {
     line-height: $navbar-btn-height;
     padding: 0 $navbar-btn-horizontal-padding;
-    color: $navbar-btn-color;
+    color: white;
     border-radius: $navbar-btn-radius;
     margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
     margin-bottom: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
     font-weight: bold;
-    background-color: $navbar-btn-bg;
+    background-color: $red;
     font-size: 12px;
     &:hover{
-      background-color: darken($navbar-btn-bg, 30%);
+      background-color: $red-hover;
     }
   }
 
@@ -102,8 +102,6 @@ $navbar-profile-border-width: 2px;
   }
 
   .img-avatar{
-    border: $navbar-profile-border-width solid $navbar-profile-border-color;
-    box-shadow: 0 0 2px rgb(200, 200, 200);
     height: $navbar-height - (2 * $navbar-profile-border-width);
     margin-right: 3px;
     border-radius: $navbar-profile-radius;
@@ -115,15 +113,22 @@ $navbar-profile-border-width: 2px;
     background: transparent;
   }
 
-  .dropdown {
-    &:hover {
-      background: rgba(54, 25, 25, .5);
-    }
+  .first-name {
+    font-size: 16px;
+    font-weight: bold;
   }
 
-  .dropdown-menu{
+  ul .dropdown-menu{
+    width: 100%;
     text-align: right;
-    margin-top: 10px;
+    margin-top: 1px;
+    border: none;
+    background: $nacre;
+    box-shadow: none;
+    & a:hover {
+      background: none;
+      color: $red-hover;
+    }
   }
 
   // .navbar-nav > li > .dropdown-menu:before{
@@ -149,16 +154,25 @@ $navbar-profile-border-width: 2px;
 
 @media screen and (max-width: 768px) {
   .navbar-wagon {
-    .navbar-brand img, .navbar-brand svg {
-      height: 50px;
+    .navbar-brand img, .navbar-brand {
+      height: 40px;
     }
     .navbar-brand, .navbar-brand:hover
      {
       display: block;
       color: $navbar-color;
-      padding-top: 0;
+      padding: 5px;
       padding-bottom: 0;
     }
+  }
+}
+
+.add-a-pool {
+  background-color: $red;
+  color: white;
+  &:hover {
+    background-color: $red-hover;
+    border: 1px solid $red;
   }
 }
 

@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [ :facebook ]
 
-  has_many :bookings, dependent: :destroy
-  has_many :pools, dependent: :destroy
+  has_many :bookings
+  has_many :pools
   has_many :requests, through: :pools, source: :bookings
 
   validates :first_name, presence: true

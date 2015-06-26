@@ -1,26 +1,28 @@
 /* -------------------------------------
  * You killer button SASS module
  * ------------------------------------- */
+.container-fb-button {
+  margin: 40px auto;
+}
+
 .facebookConnect {
   color: white;
   font-size: 20px;
   text-align: center;
-  background: $facebook;
+  background-color: $facebook;
   border-radius: 2px;
-  margin: 20px 0px;
   width: 100%;
   padding: 15px;
   &:hover {
-    background: $facebook-hover;
-    cursor: pointer;
-  }
-  & a {
     color: white;
+    background-color: $facebook-hover;
+    cursor: pointer;
   }
   & i {
     margin-right: 10px;
   }
 }
+
 
 .mainLoginSignup {
   color: white;
@@ -43,3 +45,6 @@
     margin-right: 10px;
   }
 }
+
+
+

@@ -3,9 +3,14 @@
  * ------------------------------------- */
 // Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Montserrat:400,700|Raleway:300,400");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
+$base-font: "Open Sans", "sans-serif";
 $header-font: "Montserrat", "sans-serif";
 $navbar-font: 'Raleway', "sans-serif";
+
+// @import url("https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,900,700)");
+// $base-font: "Roboto", "sans-serif";
+// $header-font: "Roboto", "sans-serif";
+// $navbar-font: "Roboto", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -25,12 +30,18 @@ $base-height: 1.4;
  * Colors
  * ------------------------------------- */
 // Scheme
-$red: #EE5F5B;
+$red: #e71d36;
 $blue: #469AE0;
 $yellow: #FDB631;
-$orange: #E67E22;
-$green: #32B796;
+$orange: #ff9f1c;
+$green: #2ec4b6;
 $purple: #6452BD;
+
+$facebook: #45619D;
+$facebook-hover: #4568B2;
+$red-hover: #FA4B4E;
+$marine: #011627;
+$nacre: #fdfffc;
 
 //Color
 $mred: #EE5F5B;
@@ -39,10 +50,6 @@ $myellow: #FDB631;
 $morange: #FAB9A0;
 $mgreen: #32B796;
 $mpurple: #9F88A2;
-
-$facebook: #45619D;
-$facebook-hover: #4568B2;
-$red-hover: #FA4B4E;
 
 // Gray scale
 $gray-darker:  lighten(#000, 13.5%); // #222
