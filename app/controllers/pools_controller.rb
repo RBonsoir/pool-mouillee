@@ -28,9 +28,9 @@ class PoolsController < ApplicationController
     end
 
     if params[:length]
-      @length_selection = [@length, "Morning", "Afternoon", "All Day", "All Night long"].uniq
+      @length_selection = [@length, "Morning", "Afternoon", "All Day", "All Night Long"].uniq
     else
-      @length_selection = ["Morning", "Afternoon", "All Day", "All Night long"]
+      @length_selection = ["Morning", "Afternoon", "All Day", "All Night Long"]
     end
 
     # get pool
