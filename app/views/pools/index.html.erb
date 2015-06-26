@@ -20,7 +20,14 @@
               <%= link_to(pool_path(id: pool.id, checkin_on: @checkin_on, length: @length)) do %>
                 <div id="img-pool-index" style="background-image: url(<%= image_path pool.picture.url(:medium) %>);">
                   <p id="pool-title-display"><%= pool.title %></p>
-                  <div id="pool-price"> <%= pool.price %> € </div>
+                  <div id="pool-price">
+                    <div class="price-integer">
+                      <%= pool.price %>
+                    </div>
+                    <div id="euro">
+                       €
+                    </div>
+                 </div>
                   <%= image_tag pool.user.profile_picture, {class: "img-circle", id: "img-user-index"}%>
                 </div>
               <% end %>
