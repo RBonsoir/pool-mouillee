@@ -2,34 +2,44 @@
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
       <div class="card-white-content text-center" id="new-pool">
+        <h3>New Pool</h3>
+
         <%= simple_form_for [@pool] do |f| %>
           <%= f.error_notification %>
-          <div class="form-group">
-            <h2 class="text-left"><i class="fa fa-quote-left"></i> Give a sexy name to your pool</h2>
-            <%= f.input :title, label: false, placeholder: 'My big poooool' %>
+          <h2 class="text-left mini-header">General information</h2>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-quote-left"></i></span>
+            <%= f.input :title, label: false, placeholder: 'Give a sexy name to your pool' %>
           </div>
-          <div class="form-group">
-            <h2 class="text-left"><i class="fa fa-map-marker"></i> Address</h2>
-            <%= f.input :address, label: false, placeholder: '32 rue Marcel Pagnol Street, Nice'  %>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+            <%= f.input :address, label: false, placeholder: 'Type your pool address'  %>
             <%= f.input :street_number, as: :hidden, name: "pool[street_number]", input_html: { id: "street_number"} %>
             <%= f.input :route, as: :hidden, name: "pool[route]", input_html: { id: "route"} %>
             <%= f.input :locality, as: :hidden, name: "pool[locality]", input_html: { id: "locality"} %>
             <%= f.input :country, as: :hidden, name: "pool[country]", input_html: { id: "country"} %>
           </div>
-          <div class="form-group">
-            <h2 class="text-left"><i class="fa fa-money"></i> Price and capacity</h2>
-            <%= f.input :price, label: false, placeholder: '$ 10 - Enter a price per hour' %>
-            <%= f.input :capacity, label: false, placeholder:'6 persons, the more, the better' %>
+          <h2 class="text-left mini-header">Price and capacity</h2>
+          <div class="input-group">
+            <%= f.input :price, label: false, placeholder: 'Enter a price in €' %>
+            <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+          </div>
+          <br>
+          <div class="input-group">
+            <%= f.input :capacity, label: false, placeholder:'People capacity' %>
+            <span class="input-group-addon"><i class="fa fa-users"></i></span>
           </div>
           <div class="form-group">
-            <h2 class="text-left"><i class="fa fa-glass"></i> A brief description</h2>
+            <h2 class="text-left mini-header">Description</h2>
             <%= f.input :content, label: false, placeholder: 'Great pool! Sun is shining till late in afternoon, great to chill out by the pool with chicks!' %>
           </div>
-          <div class="form-group">
-            <h2 class="text-left"><i class="fa fa-camera-retro"></i> Add a picture for your pool</h2>
+          <div class="input-group">
+            <h2 class="text-left mini-header"><i class="fa fa-camera-retro"></i> Add a picture for your pool</h2>
             <%= f.file_field :picture %>
           </div>
-          <%= f.button :submit, class: 'btn-danger' %>
+          <br>
+            <%= f.button :submit, class: 'btn-danger confirm-pool' %>
         <% end %>
       </div>
     </div>

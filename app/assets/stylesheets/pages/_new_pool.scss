@@ -1,3 +1,14 @@
-#new-pool h2{
-  font-size: 16px;
+#new-pool {
+  margin-bottom: 100px;
+  & h2{
+    font-size: 16px;
+  }
+  & .mini-header {
+    color: $red;
+  }
+  & .confirm-pool {
+    font-size: 18px;
+    width: 100%;
+    padding: 15px 0px;
+  }
 }
