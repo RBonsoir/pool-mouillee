@@ -19,13 +19,15 @@
       <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-12">
         <div>
           <form action="/pools" method="get" class="form-inline">
-            <div class="form-group">
+            <div class="input-group">
               <label class="sr-only" for="city">City</label>
+              <span class="input-group-addon"><i class="fa fa-search"></i></span>
               <input type="text" class="form-control" name="city" placeholder="City">
             </div>
-            <div class="form-group">
+            <div class="input-group">
               <label class="sr-only" for="checkin_on">Date</label>
-              <input type="date" class="form-control" name="checkin_on">
+              <input type="text" class='form-control checkin' name="checkin_on" placeholder="<%= Date.today.strftime("%d/%m/%Y") %>">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
             <div class="form-group">
               <label class="sr-only" for="length">Duration</label>
@@ -42,6 +44,18 @@
       </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      $('.checkin').datepicker({
+          format: "dd/mm/yyyy",
+          autoclose: true,
+          todayHighlight: true
+      });
+    });
+  <% end %>
+<% end %>
 
 
 
