@@ -1,3 +1,6 @@
 <%- resource_class.omniauth_providers.each do |provider| %>
-  <i class="fa fa-facebook"></i> <%= link_to "Connect with Facebook", omniauth_authorize_path(resource_name, provider) %><br />
+  <%= link_to omniauth_authorize_path(resource_name, provider), class:'facebookConnect' do %>
+    <i class="fa fa-facebook"></i>Connect with Facebook
+  <% end %>
+  <br />
 <% end -%>

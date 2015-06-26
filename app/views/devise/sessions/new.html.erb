@@ -4,9 +4,9 @@
       <div class="col-sm-6 col-sm-offset-3">
         <div class="card-white-content">
 
-          <div class="facebookConnect">
-            <%= render "devise/shared/facebookConnect" %>
-          </div>
+        <div class='container-fb-button text-center'>
+          <%= render "devise/shared/facebookConnect" %>
+        </div>
 
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <%= f.error_notification %>

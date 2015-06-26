@@ -69,3 +69,10 @@
   top: -10%;
   left: 80%;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
